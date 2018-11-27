@@ -1,0 +1,91 @@
+<?php
+    session_start();
+    if(empty($SESSION['clientes'])){
+        $_SESSION['clientes'] = [];
+    }
+    //$clientes = [];
+    if (!empty()) {
+        array_push($_SESSION['clientes'],$_POST);
+
+    }
+   
+    printf_r($_SESSION['clientes']);
+?>
+
+
+<html>
+<head>
+    <title>Cadastro</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/navbar_sticky-footer-navbar.css" rel="stylesheet">
+
+</head>
+<body >
+
+<?php
+
+include_once("header.php");
+
+?>
+
+<main role="main" class="container">
+
+<h1>Cadastro de Cliente</h1>
+<form action="RecebeValores.php" method="post">
+<div class="form-group">
+    <label for="nome">Nome</label>
+    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome">
+</div>
+<div class="form-group">
+    <label for="idade">Idade</label>
+    <input type="number" class="form-control" name="idade"
+    id="idade" placeholder="Digite sua idade"
+    onkeydown="return event.keyCode >= 48 && event.keyCode <= 57 
+    ? true : false;">
+</div>
+<div class="form-group">
+    <label for="dtNascimento">Data de nascimento</label>
+    <input type="date" class="form-control"  name="dtnascimento"
+    id="dtNascimento" placeholder="Digite a data de nascimento">
+</div>
+<button type="submit" class="btn btn-primary" value="Salvar">Salvar</button>
+</form>
+
+<table class="table">
+    <tr>
+        <th>ID</th>        
+        <th>NOME</th>        
+        <th>&nbsp;</th>    
+        <th>&nbsp;</th>    
+    </tr>
+    <tr>
+        <td>1</td>        
+        <td>PEDRO</td>        
+        <td><button>Carregar</button></td>     
+        <td><button onclick="return confirm('Você está certo disso?');">Excluir</button></td>     
+    </tr>
+    <tr>
+        <td>2</td>        
+        <td>MARIA</td>        
+        <td><button>Carregar</button></td>     
+        <td><button>Excluir</button></td>     
+    </tr>
+    <tr>
+        <td>3</td>        
+        <td>MARTA</td>        
+        <td><button>Carregar</button></td>    
+        <td><button>Excluir</button></td>      
+    </tr>
+</table>
+
+
+</main>
+
+<footer class="footer">
+<div class="container">
+    <span class="text-muted">Sistema abc!!</span>
+</div>
+</footer>
+    
+</body>
+</html>
